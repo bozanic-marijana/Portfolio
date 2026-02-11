@@ -1,429 +1,1466 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Name — Product Person</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  :root {
-    --bg: #FAFAF8;
-    --text: #1a1a1a;
-    --text-light: #6b6b6b;
-    --accent: #2D5A3D;
-    --accent-light: #E8F0EB;
-    --border: #e0ddd8;
-    --card-bg: #fff;
-    --warm: #C45D3E;
-  }
-  
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-weight: 300;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marijana Božanić — Product Mind, Engineering Hands</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #faf9f7;
+            --warm-gray: #6b6560;
+            --accent: #c45d3e;
+            --accent-light: #f4ebe6;
+            --accent-hover: #a84e33;
+            --border: #e8e4df;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --radius: 8px;
+        }
 
-  ::selection {
-    background: var(--accent-light);
-    color: var(--accent);
-  }
-  
-  /* NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 4rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  nav .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    color: var(--text);
-    text-decoration: none;
-  }
-  nav .links { display: flex; gap: 2.5rem; align-items: center; }
-  nav .links a {
-    text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    transition: color 0.3s;
-    position: relative;
-  }
-  nav .links a:hover { color: var(--accent); }
-  nav .links a.active { 
-    color: var(--accent); 
-    font-weight: 500; 
-  }
-  nav .links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 1.5px;
-    background: var(--accent);
-    border-radius: 1px;
-  }
-  .badge {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.15rem 0.5rem;
-    border-radius: 2px;
-    margin-left: 0.3rem;
-    vertical-align: middle;
-  }
-  
-  /* HERO */
-  .hero {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem;
-    animation: fadeUp 0.8s ease-out;
-  }
-  .hero .eyebrow {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .hero .eyebrow::after {
-    content: '';
-    height: 1px;
-    width: 40px;
-    background: var(--accent);
-    opacity: 0.4;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3.2rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-  }
-  .hero h1 em {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    color: var(--accent);
-  }
-  .hero .subtitle {
-    font-size: 1.15rem;
-    color: var(--text-light);
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-  }
-  .hero .subtitle .aside {
-    font-style: italic;
-    color: var(--text-light);
-    opacity: 0.75;
-    font-size: 0.95rem;
-  }
-  
-  /* STRUCTURED DATA */
-  .info-grid {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    animation: fadeUp 0.8s ease-out 0.15s both;
-  }
-  .info-item {
-    background: var(--card-bg);
-    padding: 1.5rem 2rem;
-    transition: background 0.3s;
-  }
-  .info-item:hover {
-    background: var(--accent-light);
-  }
-  .info-item .label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-light);
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-  }
-  .info-item .value {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text);
-  }
-  .info-item .footnote {
-    font-size: 0.78rem;
-    color: var(--text-light);
-    font-style: italic;
-    margin-top: 0.2rem;
-    opacity: 0.7;
-  }
-  
-  /* ABOUT */
-  .about {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 2rem 4rem;
-    animation: fadeUp 0.8s ease-out 0.3s both;
-  }
-  .about h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-  }
-  .about p {
-    color: var(--text-light);
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-    max-width: 650px;
-  }
-  .about .callout {
-    margin-top: 1.5rem;
-    padding: 1.2rem 1.5rem;
-    background: var(--accent-light);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 4px 4px 0;
-    font-size: 0.95rem;
-    color: var(--text);
-    font-style: italic;
-    max-width: 650px;
-  }
-  
-  /* CASE STUDIES */
-  .section-header {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 2rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-top: 1px solid var(--border);
-    animation: fadeUp 0.8s ease-out 0.45s both;
-  }
-  .section-header h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-  }
-  .section-header a {
-    font-size: 0.85rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    transition: gap 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  .section-header a:hover { gap: 0.6rem; }
-  
-  .case-studies {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem 5rem;
-    display: flex;
-    flex-direction: column;
-    animation: fadeUp 0.8s ease-out 0.5s both;
-  }
-  .case-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .case-card:first-child { border-top: 1px solid var(--border); }
-  .case-card:hover { padding-left: 1rem; }
-  .case-card:hover .case-title { color: var(--accent); }
-  .case-left {}
-  .case-title {
-    font-size: 1.1rem;
-    font-weight: 400;
-    transition: color 0.3s;
-    margin-bottom: 0.25rem;
-  }
-  .case-oneliner {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    font-style: italic;
-  }
-  .case-tag {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: var(--accent-light);
-    padding: 0.3rem 0.8rem;
-    border-radius: 2px;
-    white-space: nowrap;
-    font-weight: 500;
-  }
-  
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--text-light);
-  }
-  footer a { 
-    color: var(--accent); 
-    text-decoration: none; 
-    transition: color 0.3s;
-  }
-  footer a:hover { color: var(--text); }
-  .footer-right {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  .footer-note {
-    font-style: italic;
-    opacity: 0.6;
-    font-size: 0.75rem;
-  }
-  
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @media (max-width: 600px) {
-    nav { padding: 1rem 1.5rem; }
-    .hero { padding: 4rem 1.5rem 3rem; }
-    .hero h1 { font-size: 2.2rem; }
-    .info-grid { grid-template-columns: 1fr; margin: 0 1.5rem 3rem; }
-    .about, .section-header, .case-studies { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .case-card { grid-template-columns: 1fr; gap: 0.5rem; }
-    .case-tag { justify-self: start; }
-    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
-  }
-</style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        /* ============ NAVIGATION ============ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 249, 247, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .nav-tab {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-tab:hover {
+            color: var(--ink);
+            background: rgba(0,0,0,0.03);
+        }
+
+        .nav-tab.active {
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        /* ============ PAGE SECTIONS ============ */
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        main {
+            padding-top: 64px;
+        }
+
+        /* ============ HOME PAGE ============ */
+        .hero {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 5rem 2rem 3rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            color: var(--warm-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(196, 93, 62, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--ink);
+            transform: translateY(-1px);
+        }
+
+        .btn-arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Highlights panel */
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .highlight-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .highlight-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .highlight-card:hover::before {
+            opacity: 1;
+        }
+
+        .highlight-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.35rem;
+        }
+
+        .highlight-label {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.15rem;
+        }
+
+        .highlight-detail {
+            font-size: 0.82rem;
+            color: var(--warm-gray);
+            font-style: italic;
+        }
+
+        /* About section on home */
+        .about-section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        .about-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--ink);
+        }
+
+        .about-text p {
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-aside {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .aside-item {
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .aside-item:hover {
+            border-left-color: var(--accent);
+        }
+
+        .aside-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--warm-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .aside-value {
+            font-size: 0.95rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        /* Philosophy quote */
+        .philosophy {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+        }
+
+        .philosophy-card {
+            background: var(--ink);
+            color: var(--paper);
+            border-radius: 12px;
+            padding: 3rem 3.5rem;
+            position: relative;
+        }
+
+        .philosophy-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            position: absolute;
+            top: -0.5rem;
+            left: 1.5rem;
+            color: var(--accent);
+            opacity: 0.4;
+            line-height: 1;
+        }
+
+        .philosophy blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy cite {
+            font-family: 'Source Sans 3', sans-serif;
+            font-style: normal;
+            font-size: 0.88rem;
+            color: rgba(250, 249, 247, 0.6);
+        }
+
+        /* ============ CASE STUDIES PAGE ============ */
+        .cs-header {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .cs-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-header p {
+            color: var(--warm-gray);
+            font-size: 1.05rem;
+            max-width: 600px;
+        }
+
+        .cs-grid {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .cs-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cs-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        .cs-card-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .cs-card-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            align-self: flex-start;
+        }
+
+        .cs-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            color: var(--ink);
+        }
+
+        .cs-card-oneliner {
+            font-style: italic;
+            color: var(--warm-gray);
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .cs-card-body {
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .cs-card-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+
+        .cs-skill {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+        }
+
+        .cs-card-result {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .cs-result-item {
+            flex: 1;
+        }
+
+        .cs-result-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .cs-result-label {
+            font-size: 0.75rem;
+            color: var(--warm-gray);
+        }
+
+        /* Full case study expanded view */
+        .cs-expanded {
+            display: none;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .cs-expanded.active {
+            display: block;
+        }
+
+        .cs-back {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--warm-gray);
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 2rem;
+            padding: 0.4rem 0;
+            transition: color 0.2s;
+        }
+
+        .cs-back:hover {
+            color: var(--accent);
+        }
+
+        .cs-expanded h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-expanded .cs-subtitle {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--warm-gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .cs-expanded h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .cs-expanded h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cs-expanded p {
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .cs-expanded strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .cs-expanded .cs-highlight-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .cs-expanded .cs-highlight-box p {
+            color: var(--ink);
+            margin-bottom: 0;
+        }
+
+        .cs-expanded table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .cs-expanded th {
+            text-align: left;
+            font-weight: 600;
+            color: var(--ink);
+            padding: 0.75rem 1rem;
+            background: var(--accent-light);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cs-expanded td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--warm-gray);
+        }
+
+        .cs-expanded .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .cs-expanded .result-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        .cs-expanded .result-card .result-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .cs-expanded .result-card .result-desc {
+            font-size: 0.88rem;
+            color: var(--warm-gray);
+            margin-top: 0.25rem;
+        }
+
+        /* Read more link on cards */
+        .cs-read-more {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.75rem;
+            transition: gap 0.2s;
+            background: none;
+            border: none;
+            font-family: 'Source Sans 3', sans-serif;
+            padding: 0;
+        }
+
+        .cs-read-more:hover {
+            gap: 0.6rem;
+        }
+
+        /* ============ ARTICLES PAGE ============ */
+        .articles-header {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .articles-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .articles-wip {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .wip-card {
+            background: var(--card-bg);
+            border: 1.5px dashed var(--border);
+            border-radius: 12px;
+            padding: 4rem 3rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .wip-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .wip-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .wip-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .wip-card .wip-hint {
+            margin-top: 1.5rem;
+            font-size: 0.82rem;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* ============ CONTACT SECTION ============ */
+        .contact-section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-subtitle {
+            color: var(--warm-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a.contact-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'Source Sans 3', sans-serif;
+        }
+
+        .contact-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--warm-gray);
+        }
+
+        .contact-value {
+            font-size: 0.92rem;
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 0.82rem;
+            color: var(--warm-gray);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            color: var(--warm-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-cta-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .philosophy-card {
+                padding: 2rem;
+            }
+
+            .philosophy blockquote {
+                font-size: 1.2rem;
+            }
+
+            .nav-inner {
+                padding: 0 1rem;
+            }
+
+            .hero, .about-section, .philosophy, .cs-header, .cs-grid, .articles-header, .articles-wip {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .cs-expanded .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+        .delay-5 { animation-delay: 0.5s; opacity: 0; }
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">Your Name</a>
-  <div class="links">
-    <a href="#" class="active">Home</a>
-    <a href="#">Case Studies</a>
-    <a href="#">Articles <span class="badge">Soon™</span></a>
-  </div>
+<!-- ============ NAVIGATION ============ -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a class="nav-logo" onclick="navigateTo('home')">Marijana Božanić</a>
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-page="home" onclick="navigateTo('home')">Home</button>
+            <button class="nav-tab" data-page="casestudies" onclick="navigateTo('casestudies')">Case Studies</button>
+            <button class="nav-tab" data-page="articles" onclick="navigateTo('articles')">Articles</button>
+        </div>
+    </div>
 </nav>
 
-<section class="hero">
-  <div class="eyebrow">Product Manager</div>
-  <h1>I turn messy, complex problems into products people <em>actually</em> use.</h1>
-  <p class="subtitle">Solutions Engineer making the leap to Product Management — with 3+ years of sitting in labs, decoding legacy systems, and convincing scientists that digital notebooks won't bite. <span class="aside">(They didn't.)</span></p>
-</section>
+<main>
 
-<div class="info-grid">
-  <div class="info-item">
-    <div class="label">Current Role</div>
-    <div class="value">Solutions Engineer @ Alchemy Cloud</div>
-  </div>
-  <div class="info-item">
-    <div class="label">Industry</div>
-    <div class="value">Chemical & Manufacturing</div>
-    <div class="footnote">Yes, the one with actual chemistry</div>
-  </div>
-  <div class="info-item">
-    <div class="label">Focus Areas</div>
-    <div class="value">R&D Digitization, Process Optimization</div>
-  </div>
-  <div class="info-item">
-    <div class="label">Superpower</div>
-    <div class="value">Translating between executives and end users</div>
-    <div class="footnote">They rarely speak the same language</div>
-  </div>
+<!-- ========================================== -->
+<!-- HOME PAGE -->
+<!-- ========================================== -->
+<div class="page active visible" id="page-home">
+
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h1 class="animate-in delay-1">Marijana Božanić</h1>
+                <p class="hero-subtitle animate-in delay-2">Product mind, engineering hands.</p>
+                <p class="animate-in delay-3">I'm a Solutions Engineer making the leap to Product Management — not because I woke up one day and decided to pivot, but because I realized I'd been doing PM work for years. I just didn't have the title.</p>
+                <p class="animate-in delay-3">Six years in B2B SaaS taught me that the best product insights don't come from boardrooms. They come from sitting with a frustrated scientist who can't find the "save" button, and figuring out whether that's a training problem, a configuration problem, or a sign your product is fundamentally wrong.</p>
+                <div class="hero-cta-row animate-in delay-4">
+                    <button class="btn btn-primary" onclick="navigateTo('casestudies')">
+                        Read the case studies <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="highlights animate-in delay-4">
+                <div class="highlight-card">
+                    <div class="highlight-number">6+</div>
+                    <div class="highlight-label">Years in B2B SaaS</div>
+                    <div class="highlight-detail">Chemical & manufacturing industry</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-number">100%</div>
+                    <div class="highlight-label">Digital adoption rate</div>
+                    <div class="highlight-detail">Across every implementation. No exceptions.</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-number">7</div>
+                    <div class="highlight-label">Cross-functional teams coordinated</div>
+                    <div class="highlight-detail">From lab bench to C-suite</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-number">1</div>
+                    <div class="highlight-label">Customer that almost churned</div>
+                    <div class="highlight-detail">Turned into a 3× expansion. Long story.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-divider"></div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>The short version</h2>
+                <p>I've spent my career at the intersection of customers and products in vertical SaaS. My day job was implementations — configuring platforms, migrating decades of data, training users who would rather keep their spreadsheets, thank you very much.</p>
+                <p>But what I actually did was product work: user research in the field, autonomous product decisions, roadmap influence through systematic customer discovery, and building frameworks that turned chaos into repeatable processes.</p>
+                <p>Now I'm making it official. The case studies below tell the real stories — no buzzwords, no embellishment, just what happened and what I learned from it.</p>
+            </div>
+            <div class="about-aside">
+                <div class="aside-item">
+                    <div class="aside-label">Domain</div>
+                    <div class="aside-value">Chemical & Manufacturing SaaS</div>
+                </div>
+                <div class="aside-item">
+                    <div class="aside-label">Superpower</div>
+                    <div class="aside-value">Translating user pain into product decisions</div>
+                </div>
+                <div class="aside-item">
+                    <div class="aside-label">Philosophy</div>
+                    <div class="aside-value">Bad feedback > polite silence</div>
+                </div>
+                <div class="aside-item">
+                    <div class="aside-label">Currently</div>
+                    <div class="aside-value">Building a Post Validator tool (because I can't help myself)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-card">
+            <blockquote>The dangerous customers aren't the ones who complain. They're the quiet ones who slowly disengage. Give me someone furious over someone indifferent — every time.</blockquote>
+            <cite>— A lesson learned the hard way, across dozens of implementations</cite>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="about-divider"></div>
+        <h2>Get in Touch</h2>
+        <p class="contact-subtitle">Open to product management opportunities — or just a good conversation about B2B SaaS.</p>
+        <div class="contact-grid">
+            <a href="mailto:makica921@gmail.com" class="contact-card">
+                <span class="contact-icon">✉</span>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">makica921@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener" class="contact-card">
+                <span class="contact-icon">in</span>
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">marijanabozanic</span>
+            </a>
+            <a href="tel:+381638870841" class="contact-card">
+                <span class="contact-icon">☎</span>
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+381 63 887 0841</span>
+            </a>
+            <div class="contact-card">
+                <span class="contact-icon">⌖</span>
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Serbia</span>
+            </div>
+        </div>
+    </section>
+
 </div>
 
-<section class="about">
-  <h2>About Me</h2>
-  <p>I work at the intersection of technology and domain expertise, helping R&D and manufacturing teams replace legacy processes with systems that actually work for them — not just systems that look good in a demo.</p>
-  <p>My experience as a Solutions Engineer gave me something most PMs don't have: hundreds of hours in the field with end users, watching them work, understanding the gap between what leadership wants and what the people on the ground need. That's where the best product decisions come from.</p>
-  <div class="callout">
-    "Most people see a spreadsheet and think 'data.' I see a spreadsheet and think 'someone's workaround for a broken process.'"
-  </div>
-</section>
+<!-- ========================================== -->
+<!-- CASE STUDIES PAGE -->
+<!-- ========================================== -->
+<div class="page" id="page-casestudies">
 
-<div class="section-header">
-  <h2>Case Studies</h2>
-  <a href="#">View all <span>→</span></a>
+    <!-- Grid view (default) -->
+    <div id="cs-list-view">
+        <section class="cs-header">
+            <h1>Case Studies</h1>
+            <p>Four stories from the field. Real problems, real decisions, real outcomes — no formal PM title required.</p>
+        </section>
+
+        <section class="cs-grid">
+            <!-- CS 1: R&D Transformation -->
+            <div class="cs-card">
+                <span class="cs-card-number">01</span>
+                <span class="cs-card-tag">Product Ownership</span>
+                <h3>R&D Digital Transformation</h3>
+                <p class="cs-card-oneliner">Digitized lab notebooks across 3 facilities. Nobody cried.</p>
+                <p class="cs-card-body">Led the end-to-end digitization of R&D workflows for a multi-site chemical company — making product decisions, coordinating 7 teams, and migrating 20+ years of data. Acted as de facto product owner without the title.</p>
+                <div class="cs-card-skills">
+                    <span class="cs-skill">User Research</span>
+                    <span class="cs-skill">Cross-functional Leadership</span>
+                    <span class="cs-skill">Scope Management</span>
+                    <span class="cs-skill">Stakeholder Coordination</span>
+                </div>
+                <div class="cs-card-result">
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">50%</div>
+                        <div class="cs-result-label">Faster dev cycles</div>
+                    </div>
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">100%</div>
+                        <div class="cs-result-label">Digital adoption</div>
+                    </div>
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">20+ yrs</div>
+                        <div class="cs-result-label">Data unlocked</div>
+                    </div>
+                </div>
+                <button class="cs-read-more" onclick="openCaseStudy('cs1')">Read full case study <span>→</span></button>
+            </div>
+
+            <!-- CS 2: Customer Onboarding -->
+            <div class="cs-card">
+                <span class="cs-card-number">02</span>
+                <span class="cs-card-tag">Change Management</span>
+                <h3>Turning a Near-Failure Into a Growth Engine</h3>
+                <p class="cs-card-oneliner">Customer threatened to leave. They tripled instead.</p>
+                <p class="cs-card-body">When a 30-user enterprise account escalated to near-cancellation, I developed the Feedback Triage Framework — a systematic approach to classifying and resolving customer pain that saved the account and improved the platform for everyone.</p>
+                <div class="cs-card-skills">
+                    <span class="cs-skill">Change Management</span>
+                    <span class="cs-skill">Customer Retention</span>
+                    <span class="cs-skill">Frameworks Thinking</span>
+                    <span class="cs-skill">Product Sense</span>
+                </div>
+                <div class="cs-card-result">
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">3×</div>
+                        <div class="cs-result-label">Account expansion</div>
+                    </div>
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">6 mo</div>
+                        <div class="cs-result-label">Crisis to satisfaction</div>
+                    </div>
+                </div>
+                <button class="cs-read-more" onclick="openCaseStudy('cs2')">Read full case study <span>→</span></button>
+            </div>
+
+            <!-- CS 3: Feature Requests → Roadmap -->
+            <div class="cs-card">
+                <span class="cs-card-number">03</span>
+                <span class="cs-card-tag">Product Discovery</span>
+                <h3>From Field Signals to Product Roadmap</h3>
+                <p class="cs-card-oneliner">The CTO said: "When she says 'I need,' it always means a customer needs it."</p>
+                <p class="cs-card-body">Built a systematic pipeline from customer pain to shipped features. Not one-off requests — a continuous discovery engine that earned the product team's trust as their most reliable signal from the field.</p>
+                <div class="cs-card-skills">
+                    <span class="cs-skill">Continuous Discovery</span>
+                    <span class="cs-skill">Stakeholder Influence</span>
+                    <span class="cs-skill">Product Sense</span>
+                    <span class="cs-skill">Prioritization</span>
+                </div>
+                <div class="cs-card-result">
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">3</div>
+                        <div class="cs-result-label">Platform features shipped</div>
+                    </div>
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">∞</div>
+                        <div class="cs-result-label">Workarounds eliminated</div>
+                    </div>
+                </div>
+                <button class="cs-read-more" onclick="openCaseStudy('cs3')">Read full case study <span>→</span></button>
+            </div>
+
+            <!-- CS 4: Post Validator -->
+            <div class="cs-card">
+                <span class="cs-card-number">04</span>
+                <span class="cs-card-tag">Systems Thinking</span>
+                <h3>The Post Validator</h3>
+                <p class="cs-card-oneliner">A pet project born from sitting in one too many meetings where the same bottleneck showed up.</p>
+                <p class="cs-card-body">Volunteered to help a skills academy with their marketing chaos. Found a structural bottleneck (all posts stuck waiting for owner validation), then designed a configurable tool to codify tacit quality standards. Complete with SRS, MVP scope, and success metrics — because apparently I can't turn it off.</p>
+                <div class="cs-card-skills">
+                    <span class="cs-skill">Initiative</span>
+                    <span class="cs-skill">Systems Thinking</span>
+                    <span class="cs-skill">Product Development</span>
+                    <span class="cs-skill">Process Design</span>
+                </div>
+                <div class="cs-card-result">
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">WIP</div>
+                        <div class="cs-result-label">In design phase</div>
+                    </div>
+                    <div class="cs-result-item">
+                        <div class="cs-result-num">1</div>
+                        <div class="cs-result-label">SRS written (for fun)</div>
+                    </div>
+                </div>
+                <button class="cs-read-more" onclick="openCaseStudy('cs4')">Read full case study <span>→</span></button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== EXPANDED CASE STUDY VIEWS ===== -->
+
+    <!-- CS1 Expanded: R&D Transformation -->
+    <div class="cs-expanded" id="cs1-expanded">
+        <button class="cs-back" onclick="closeCaseStudy()">← Back to all case studies</button>
+        <span class="cs-card-tag">Product Ownership</span>
+        <h1>R&D Digital Transformation</h1>
+        <p class="cs-subtitle">How I became the de facto product owner for a multi-site lab digitization — without the title, the authority, or the playbook.</p>
+
+        <h2>The Business Problem</h2>
+        <p>A multi-site chemical company needed to replace physical lab notebooks and fragmented Excel workflows with a centralized digital platform. The goal: 30% reduction in formulation-to-production time, data sharing across 3 facilities, and 20+ years of historical data made searchable.</p>
+        <p>The catch: 12 scientists across 3 facilities, each with their own way of working, their own Excel setups, their own reasons not to change. And no PM was assigned to customer implementations — so every product decision landed on me.</p>
+
+        <h2>Key Product Decisions</h2>
+
+        <h3>Decision 1: Template Unification vs. Customization</h3>
+        <p>Every scientist wanted their own template. I had to choose between giving everyone exactly what they wanted (expensive, unmaintainable) and creating a unified framework that was flexible enough to feel personal but standardized enough to enable cross-site data sharing.</p>
+        <div class="cs-highlight-box">
+            <p><strong>I chose a configurable template framework</strong> — standardized structure where field visibility, naming, and layout could adapt per user while keeping the underlying data model consistent. Scientists got personalization; leadership got comparable data across sites.</p>
+        </div>
+
+        <h3>Decision 2: Scope Management Under Pressure</h3>
+        <p>The wish list grew constantly. I made the call to scope Phase 1 tightly around core workflows and defer advanced analytics to Phase 2 — prioritizing adoption speed over feature completeness.</p>
+        <p><strong>Trade-off:</strong> Some user frustration with missing features balanced against on-time delivery and budget compliance. Better to ship something working than delay for nice-to-haves.</p>
+
+        <h3>Decision 3: Strategic Stakeholder Sequencing</h3>
+        <p>I always validated decisions with management before presenting to lab personnel. This ensured solutions met business requirements first, then I could advocate confidently for user adoption. It prevented rework and maintained trust with both groups.</p>
+
+        <h2>Execution: Coordinating 7 Teams</h2>
+        <p>I ran point across lab scientists (workflow design, training), executives (requirements, dashboards), the production plant (formulation handoff), IT (ERP integration, SSO), our internal product team (feature pitches), finance (contracts, budget), and development (bugs, testing).</p>
+        <p>My coordination practices: solution architecture map with C-suite buy-in before building anything, RACI chart to prevent dropped tasks, feedback loops during rollout, and on-site support for the first 3 months.</p>
+
+        <h2>Results</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-value">50% faster</div>
+                <div class="result-desc">Formulation-to-production cycle reduced from 6-8 weeks to 3-4 weeks</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">100% adoption</div>
+                <div class="result-desc">Physical notebooks retired within 6 months — no workarounds, no parallel systems</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">20+ years</div>
+                <div class="result-desc">Historical formulations now searchable and analyzable</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Zero prep time</div>
+                <div class="result-desc">Board meeting preparation eliminated entirely</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS2 Expanded: Customer Onboarding -->
+    <div class="cs-expanded" id="cs2-expanded">
+        <button class="cs-back" onclick="closeCaseStudy()">← Back to all case studies</button>
+        <span class="cs-card-tag">Change Management</span>
+        <h1>Turning a Near-Failure Into a Growth Engine</h1>
+        <p class="cs-subtitle">From escalation to 3× expansion — how leaning into negative feedback saved an account and improved the platform for everyone.</p>
+
+        <h2>The Crisis</h2>
+        <p>Six weeks after deploying at a multi-site chemical company (30 users, 4 departments, 3 locations), the account was in full escalation. Leadership couldn't extract the reports they'd been promised. Scientists found the interface slower than Excel. Nearly everyone resisted — only one scientist showed genuine engagement.</p>
+        <p>The customer's message was clear: <em>"This isn't working. We're considering pulling the plug."</em></p>
+
+        <h2>The Feedback Triage Framework</h2>
+        <p>Instead of getting defensive, I leaned into the negativity. I created a comprehensive feedback log — everything from articulate technical complaints to vague frustrations like <em>"What is this? I don't understand this!"</em></p>
+        <p>Then I classified every item into three categories and resolved them in deliberate sequence:</p>
+
+        <table>
+            <thead>
+                <tr><th>Category</th><th>What It Means</th><th>Resolution Order</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Training gap</strong></td><td>Users didn't know how to do something the platform already supported</td><td>First — shrinks the complaint list fast</td></tr>
+                <tr><td><strong>Implementation issue</strong></td><td>Something I could fix through configuration or workflow adjustment</td><td>Second — quick wins that rebuild trust</td></tr>
+                <tr><td><strong>Product gap</strong></td><td>Genuine platform limitation requiring development</td><td>Last — documented with full business context</td></tr>
+            </tbody>
+        </table>
+
+        <div class="cs-highlight-box">
+            <p><strong>Why this order matters:</strong> Many "product problems" are actually knowledge gaps. By resolving training issues first, the complaint list shrank significantly and users' confidence grew. By the time I escalated genuine product gaps to engineering, I had a clean, validated list — not a mess of mixed signals.</p>
+        </div>
+
+        <h2>The Champion Strategy</h2>
+        <p>That one engaged scientist became my secret weapon. I invested extra time with her, making her a power user. She started helping colleagues voluntarily, demonstrating workflows in her own words and context. Peer advocacy moved the needle where my training sessions couldn't.</p>
+
+        <h2>Product Impact</h2>
+        <p>The genuine product gaps I escalated drove platform-wide improvements: a side-by-side experiment comparison feature (replacing painful scrolling), streamlined navigation with clearer data hierarchy, and shortcut buttons that reduced click paths for common tasks. These shipped for all customers, not just this one.</p>
+
+        <h2>Results</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-value">3× expansion</div>
+                <div class="result-desc">Customer expanded to additional locations and business units</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">6 months</div>
+                <div class="result-desc">From near-cancellation to full satisfaction</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">3 features</div>
+                <div class="result-desc">Platform improvements shipped from this customer's feedback</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Reusable</div>
+                <div class="result-desc">Framework became standard playbook for all future onboardings</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS3 Expanded: Feature Requests → Roadmap -->
+    <div class="cs-expanded" id="cs3-expanded">
+        <button class="cs-back" onclick="closeCaseStudy()">← Back to all case studies</button>
+        <span class="cs-card-tag">Product Discovery</span>
+        <h1>From Field Signals to Product Roadmap</h1>
+        <p class="cs-subtitle">How a Solutions Engineer built a continuous discovery engine that shaped a SaaS platform.</p>
+
+        <h2>The Context</h2>
+        <p>At a vertical B2B SaaS company serving the chemical industry, my role as Solutions Engineer put me closer to real users than anyone else in the organization. I participated in weekly triage meetings with the product team, reviewed the full ticket backlog, and accompanied product managers on every user interview.</p>
+        <p>Over time, this proximity became a strategic advantage. The CTO said it best: <em>"When she says 'I need,' it always means a customer needs it."</em></p>
+
+        <h2>The Process</h2>
+        <p>I didn't file one-off feature requests. I ran a systematic validation process: observe a pain point during implementation, validate it across multiple customers, frame it in product-and-engineering terms, then present it with business context and cross-customer evidence. The result was that my requests had an unusually high implementation rate — because they arrived pre-validated and well-framed.</p>
+
+        <h2>Feature Spotlight: Hidden Fields</h2>
+        <p>The platform had binary field visibility: visible or not visible. But "not visible" excluded fields from reports and exports entirely. Customers were forced to choose between cluttered interfaces and complete data.</p>
+        <div class="cs-highlight-box">
+            <p>I identified that users needed a <strong>third state</strong>: present in the data layer, absent from the UI. This architectural distinction — only visible to someone deep in implementations — unlocked entirely new configuration templates and eliminated a painful tradeoff for every customer.</p>
+        </div>
+
+        <h2>Feature Spotlight: Custom Action Buttons</h2>
+        <p>The platform supported automated actions, but only at hardcoded system events. I didn't ask for a workaround for one customer — I asked for extensibility: let users define their own trigger points. Once shipped, custom action buttons became one of the platform's most versatile tools, enabling customer-specific workflows without engineering intervention.</p>
+
+        <h2>The Bigger Play: Privileges Redesign</h2>
+        <p>I also identified the need for a comprehensive privileges system overhaul. Rather than pushing it as a single massive request, I decomposed it into smaller, independently valuable tickets — then discussed the overall vision with the CTO. The feature was scoped, validated, and parked for the right moment. Not every feature needs to ship immediately; sometimes the PM skill is in the patient decomposition.</p>
+
+        <h2>What This Proves</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-value">Systematic</div>
+                <div class="result-desc">Multi-customer validation before every request</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Trusted</div>
+                <div class="result-desc">Product team's most reliable field signal</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Shipped</div>
+                <div class="result-desc">Multiple platform-level features from field insights</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Strategic</div>
+                <div class="result-desc">Framed requests in product context, not just user pain</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CS4 Expanded: Post Validator -->
+    <div class="cs-expanded" id="cs4-expanded">
+        <button class="cs-back" onclick="closeCaseStudy()">← Back to all case studies</button>
+        <span class="cs-card-tag">Systems Thinking</span>
+        <h1>The Post Validator</h1>
+        <p class="cs-subtitle">A pet project about converting tacit knowledge into structured criteria — because apparently I apply PM thinking everywhere, even when nobody's paying me to.</p>
+
+        <h2>The Situation</h2>
+        <p>I volunteered to help a skills academy for young learners with their marketing operations. The owner runs the school; a junior marketing manager handles social media. When I joined their planning meetings, the content process was entirely conversational — no structure, no pipeline, no shared system.</p>
+        <p>So I built one: a spreadsheet organizing all planned posts by course, post type, and phase, with priorities and dates. The meetings immediately became more productive.</p>
+
+        <h2>The Bottleneck</h2>
+        <p>But a pattern emerged. Week after week, posts would get stuck in the "validation" phase — waiting for the owner to review colors, fonts, formatting, tone. Three posts per week piling up, sitting for weeks. The content shifted from proactive to reactive, and opportunities were missed when viral trends passed them by.</p>
+        <div class="cs-highlight-box">
+            <p>The root cause wasn't that the owner was a bottleneck by choice. She was too busy running a school. The real problem was deeper: <strong>her quality standards existed only in her head.</strong> The marketing manager couldn't self-validate because the criteria had never been made explicit.</p>
+        </div>
+
+        <h2>The Solution: Codifying Tacit Knowledge</h2>
+        <p>I'm building a web application where the owner can define validation requirements in a structured format (enforcing how each requirement is shaped), set priorities, and the marketing manager can upload posts and evaluate them against those standards. Requirements like "the title must be white," "all colors must be brand colors," "the logo must be visible on at least one slide."</p>
+        <p>Phase 1 covers technical/visual validation. The architecture supports expanding to tone and messaging analysis in later phases.</p>
+
+        <h2>The PM Discipline</h2>
+        <p>This is a pet project, but I'm treating it like a real product: I wrote a comprehensive Software Requirements Specification with data models, acceptance criteria, and risk mitigation. I defined success metrics (80% adoption, 20% score improvement, 30% reduction in review time). I scoped an MVP and parked Phase 2 features separately.</p>
+        <p>The risk table includes "Low adoption by marketing manager" as high-impact/medium-probability, with the mitigation being to involve her in the design process. Change management thinking — on a volunteer project.</p>
+
+        <h2>Current Status</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-value">SRS complete</div>
+                <div class="result-desc">Full requirements specification with data models and acceptance criteria</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Design phase</div>
+                <div class="result-desc">Architecture defined, MVP scoped, success metrics set</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">The real insight</div>
+                <div class="result-desc">It's a training tool disguised as a QA tool — designed to help two people grow together</div>
+            </div>
+            <div class="result-card">
+                <div class="result-value">Why it matters</div>
+                <div class="result-desc">Proves I apply product thinking everywhere, not just at work</div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="case-studies">
-  <a class="case-card" href="#">
-    <div class="case-left">
-      <div class="case-title">Transforming 20 Years of R&D Knowledge</div>
-      <div class="case-oneliner">Digitized lab notebooks across 3 facilities. Nobody cried.</div>
-    </div>
-    <span class="case-tag">R&D Digitization</span>
-  </a>
-  <a class="case-card" href="#">
-    <div class="case-left">
-      <div class="case-title">Customer Onboarding & Adoption Strategy</div>
-      <div class="case-oneliner">Designed an approach that made customers actually want to use the product.</div>
-    </div>
-    <span class="case-tag">Adoption</span>
-  </a>
-  <a class="case-card" href="#">
-    <div class="case-left">
-      <div class="case-title">From Feature Requests to Roadmap Influence</div>
-      <div class="case-oneliner">Turned "can you just add a button?" into a product strategy.</div>
-    </div>
-    <span class="case-tag">Product Strategy</span>
-  </a>
-  <a class="case-card" href="#">
-    <div class="case-left">
-      <div class="case-title">Internal Process Improvement</div>
-      <div class="case-oneliner">Found a broken workflow. Fixed it. Didn't ask for permission first.</div>
-    </div>
-    <span class="case-tag">Operations</span>
-  </a>
+<!-- ========================================== -->
+<!-- ARTICLES PAGE -->
+<!-- ========================================== -->
+<div class="page" id="page-articles">
+
+    <section class="articles-header">
+        <h1>Articles</h1>
+    </section>
+
+    <section class="articles-wip">
+        <div class="wip-card">
+            <span class="wip-icon">🚧</span>
+            <h2>Under Construction</h2>
+            <p>I'm working on articles about product thinking, B2B SaaS, and the SE-to-PM transition. They'll show up here when they're ready.</p>
+            <p class="wip-hint">In the meantime, the case studies have plenty to read.</p>
+        </div>
+    </section>
+
 </div>
 
+</main>
+
+<!-- ============ FOOTER ============ -->
 <footer>
-  <span>© 2026 Your Name</span>
-  <div class="footer-right">
-    <a href="#">LinkedIn</a>
-    <span class="footer-note">Built with coffee and good intentions</span>
-  </div>
+    <div class="footer-left">© 2026 Marijana Božanić. Built with curiosity and too many late nights.</div>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:makica921@gmail.com">Email</a>
+    </div>
 </footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+    // Navigation
+    function navigateTo(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(p => {
+            p.classList.remove('visible');
+            setTimeout(() => p.classList.remove('active'), 300);
+        });
+
+        // Close any expanded case studies
+        document.querySelectorAll('.cs-expanded').forEach(e => e.classList.remove('active'));
+        const listView = document.getElementById('cs-list-view');
+        if (listView) listView.style.display = '';
+
+        // Update tabs
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector(`.nav-tab[data-page="${pageId}"]`).classList.add('active');
+
+        // Show target page
+        setTimeout(() => {
+            const target = document.getElementById(`page-${pageId}`);
+            target.classList.add('active');
+            requestAnimationFrame(() => {
+                target.classList.add('visible');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 150);
+    }
+
+    // Case study expand/collapse
+    function openCaseStudy(csId) {
+        document.getElementById('cs-list-view').style.display = 'none';
+        const expanded = document.getElementById(`${csId}-expanded`);
+        expanded.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function closeCaseStudy() {
+        document.querySelectorAll('.cs-expanded').forEach(e => e.classList.remove('active'));
+        document.getElementById('cs-list-view').style.display = '';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+    });
+</script>
 
 </body>
 </html>
