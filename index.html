@@ -1028,10 +1028,10 @@
         <h2>Get in Touch</h2>
         <p class="contact-subtitle">Open to product management opportunities — or just a good conversation about customer stories.</p>
         <div class="contact-grid">
-            <a href="/cdn-cgi/l/email-protection#98f5f9f3f1fbf9a1aaa9d8fff5f9f1f4b6fbf7f5" class="contact-card">
+            <a href="mailto:makica921@gmail.com" class="contact-card">
                 <span class="contact-icon">✉</span>
                 <span class="contact-label">Email</span>
-                <span class="contact-value"><span class="__cf_email__" data-cfemail="b5d8d4dedcd6d48c8784f5d2d8d4dcd99bd6dad8">[email&#160;protected]</span></span>
+                <span class="contact-value">makica921@gmail.com</span>
             </a>
             <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener" class="contact-card">
                 <span class="contact-icon">in</span>
@@ -1408,12 +1408,12 @@
     <div class="footer-left">© 2026 Marijana Božanić. Built with curiosity and too many late nights.</div>
     <div class="footer-links">
         <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="/cdn-cgi/l/email-protection#f598949e9c9694ccc7c4b59298949c99db969a98">Email</a>
+        <a href="mailto:makica921@gmail.com">Email</a>
     </div>
 </footer>
 
 <!-- ============ SCRIPTS ============ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // Navigation
     function navigateTo(pageId) {
         // Hide all pages
@@ -1431,15 +1431,12 @@
         document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
         document.querySelector(`.nav-tab[data-page="${pageId}"]`).classList.add('active');
 
-        // Show target page
-        requestAnimationFrame(() => {
-            const target = document.getElementById(`page-${pageId}`);
-            target.classList.add('active');
-            requestAnimationFrame(() => {
-                target.classList.add('visible');
-            });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Show target page with forced reflow to ensure transition fires
+        const target = document.getElementById(`page-${pageId}`);
+        target.classList.add('active');
+        target.offsetHeight; // force reflow — browser must process display:block before transition
+        target.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Case study expand/collapse
