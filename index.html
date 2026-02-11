@@ -1419,7 +1419,7 @@
         // Hide all pages
         document.querySelectorAll('.page').forEach(p => {
             p.classList.remove('visible');
-            setTimeout(() => p.classList.remove('active'), 300);
+            p.classList.remove('active');
         });
 
         // Close any expanded case studies
@@ -1432,14 +1432,14 @@
         document.querySelector(`.nav-tab[data-page="${pageId}"]`).classList.add('active');
 
         // Show target page
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             const target = document.getElementById(`page-${pageId}`);
             target.classList.add('active');
             requestAnimationFrame(() => {
                 target.classList.add('visible');
             });
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 150);
+        });
     }
 
     // Case study expand/collapse
