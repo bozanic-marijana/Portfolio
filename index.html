@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Product Person</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #FAFAF8;
+    --text: #1a1a1a;
+    --text-light: #6b6b6b;
+    --accent: #2D5A3D;
+    --accent-light: #E8F0EB;
+    --border: #e0ddd8;
+    --card-bg: #fff;
+    --warm: #C45D3E;
+  }
+  
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+  
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  nav .links { display: flex; gap: 2.5rem; align-items: center; }
+  nav .links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+    position: relative;
+  }
+  nav .links a:hover { color: var(--accent); }
+  nav .links a.active { 
+    color: var(--accent); 
+    font-weight: 500; 
+  }
+  nav .links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+  }
+  
+  /* HERO */
+  .hero {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    animation: fadeUp 0.8s ease-out;
+  }
+  .hero .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hero .eyebrow::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  .hero h1 em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+  .hero .subtitle .aside {
+    font-style: italic;
+    color: var(--text-light);
+    opacity: 0.75;
+    font-size: 0.95rem;
+  }
+  
+  /* STRUCTURED DATA */
+  .info-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    animation: fadeUp 0.8s ease-out 0.15s both;
+  }
+  .info-item {
+    background: var(--card-bg);
+    padding: 1.5rem 2rem;
+    transition: background 0.3s;
+  }
+  .info-item:hover {
+    background: var(--accent-light);
+  }
+  .info-item .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .info-item .value {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text);
+  }
+  .info-item .footnote {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.2rem;
+    opacity: 0.7;
+  }
+  
+  /* ABOUT */
+  .about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    animation: fadeUp 0.8s ease-out 0.3s both;
+  }
+  .about h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .about p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    max-width: 650px;
+  }
+  .about .callout {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.95rem;
+    color: var(--text);
+    font-style: italic;
+    max-width: 650px;
+  }
+  
+  /* CASE STUDIES */
+  .section-header {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.8s ease-out 0.45s both;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  .section-header a {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .section-header a:hover { gap: 0.6rem; }
+  
+  .case-studies {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    animation: fadeUp 0.8s ease-out 0.5s both;
+  }
+  .case-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .case-card:first-child { border-top: 1px solid var(--border); }
+  .case-card:hover { padding-left: 1rem; }
+  .case-card:hover .case-title { color: var(--accent); }
+  .case-left {}
+  .case-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+    transition: color 0.3s;
+    margin-bottom: 0.25rem;
+  }
+  .case-oneliner {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .case-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+  footer a { 
+    color: var(--accent); 
+    text-decoration: none; 
+    transition: color 0.3s;
+  }
+  footer a:hover { color: var(--text); }
+  .footer-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .footer-note {
+    font-style: italic;
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .info-grid { grid-template-columns: 1fr; margin: 0 1.5rem 3rem; }
+    .about, .section-header, .case-studies { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .case-card { grid-template-columns: 1fr; gap: 0.5rem; }
+    .case-tag { justify-self: start; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Your Name</a>
+  <div class="links">
+    <a href="#" class="active">Home</a>
+    <a href="#">Case Studies</a>
+    <a href="#">Articles <span class="badge">Soon™</span></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">Product Manager</div>
+  <h1>I turn messy, complex problems into products people <em>actually</em> use.</h1>
+  <p class="subtitle">Solutions Engineer making the leap to Product Management — with 3+ years of sitting in labs, decoding legacy systems, and convincing scientists that digital notebooks won't bite. <span class="aside">(They didn't.)</span></p>
+</section>
+
+<div class="info-grid">
+  <div class="info-item">
+    <div class="label">Current Role</div>
+    <div class="value">Solutions Engineer @ Alchemy Cloud</div>
+  </div>
+  <div class="info-item">
+    <div class="label">Industry</div>
+    <div class="value">Chemical & Manufacturing</div>
+    <div class="footnote">Yes, the one with actual chemistry</div>
+  </div>
+  <div class="info-item">
+    <div class="label">Focus Areas</div>
+    <div class="value">R&D Digitization, Process Optimization</div>
+  </div>
+  <div class="info-item">
+    <div class="label">Superpower</div>
+    <div class="value">Translating between executives and end users</div>
+    <div class="footnote">They rarely speak the same language</div>
+  </div>
+</div>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>I work at the intersection of technology and domain expertise, helping R&D and manufacturing teams replace legacy processes with systems that actually work for them — not just systems that look good in a demo.</p>
+  <p>My experience as a Solutions Engineer gave me something most PMs don't have: hundreds of hours in the field with end users, watching them work, understanding the gap between what leadership wants and what the people on the ground need. That's where the best product decisions come from.</p>
+  <div class="callout">
+    "Most people see a spreadsheet and think 'data.' I see a spreadsheet and think 'someone's workaround for a broken process.'"
+  </div>
+</section>
+
+<div class="section-header">
+  <h2>Case Studies</h2>
+  <a href="#">View all <span>→</span></a>
+</div>
+
+<div class="case-studies">
+  <a class="case-card" href="#">
+    <div class="case-left">
+      <div class="case-title">Transforming 20 Years of R&D Knowledge</div>
+      <div class="case-oneliner">Digitized lab notebooks across 3 facilities. Nobody cried.</div>
+    </div>
+    <span class="case-tag">R&D Digitization</span>
+  </a>
+  <a class="case-card" href="#">
+    <div class="case-left">
+      <div class="case-title">Customer Onboarding & Adoption Strategy</div>
+      <div class="case-oneliner">Designed an approach that made customers actually want to use the product.</div>
+    </div>
+    <span class="case-tag">Adoption</span>
+  </a>
+  <a class="case-card" href="#">
+    <div class="case-left">
+      <div class="case-title">From Feature Requests to Roadmap Influence</div>
+      <div class="case-oneliner">Turned "can you just add a button?" into a product strategy.</div>
+    </div>
+    <span class="case-tag">Product Strategy</span>
+  </a>
+  <a class="case-card" href="#">
+    <div class="case-left">
+      <div class="case-title">Internal Process Improvement</div>
+      <div class="case-oneliner">Found a broken workflow. Fixed it. Didn't ask for permission first.</div>
+    </div>
+    <span class="case-tag">Operations</span>
+  </a>
+</div>
+
+<footer>
+  <span>© 2026 Your Name</span>
+  <div class="footer-right">
+    <a href="#">LinkedIn</a>
+    <span class="footer-note">Built with coffee and good intentions</span>
+  </div>
+</footer>
+
+</body>
+</html>
