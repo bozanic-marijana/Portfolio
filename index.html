@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marijana Božanić — Fluent in customer feedback</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c45d3e'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='%23faf9f7' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -318,6 +319,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            margin-top: 3.5rem;
         }
 
         .aside-item {
@@ -859,6 +861,10 @@
                 gap: 2rem;
             }
 
+            .about-aside {
+                margin-top: 0;
+            }
+
             .cs-grid {
                 grid-template-columns: 1fr;
             }
@@ -1018,7 +1024,7 @@
 
     <section class="philosophy">
         <div class="philosophy-card">
-            <blockquote>The dangerous customers aren't the ones who complain. They're the quiet ones who slowly disengage. Give me someone furious over someone indifferent — every time.</blockquote>
+            <blockquote>The dangerous customers aren't the ones who complain. They're the quiet ones who slowly disengage. Give me someone furious over someone indifferent, every time.</blockquote>
             <cite>— A lesson learned the hard way, across dozens of implementations</cite>
         </div>
     </section>
@@ -1026,12 +1032,12 @@
     <section class="contact-section">
         <div class="about-divider"></div>
         <h2>Get in Touch</h2>
-        <p class="contact-subtitle">Open to product management opportunities — or just a good conversation about customer stories.</p>
+        <p class="contact-subtitle">Open to product management opportunities, or just a good conversation about customer stories.</p>
         <div class="contact-grid">
-            <a href="mailto:makica921@gmail.com" class="contact-card">
+            <a href="/cdn-cgi/l/email-protection#4c212d27252f2d757e7d0c2b212d2520622f2321" class="contact-card">
                 <span class="contact-icon">✉</span>
                 <span class="contact-label">Email</span>
-                <span class="contact-value">makica921@gmail.com</span>
+                <span class="contact-value"><span class="__cf_email__" data-cfemail="2f424e44464c4e161d1e6f48424e4643014c4042">[email&#160;protected]</span></span>
             </a>
             <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener" class="contact-card">
                 <span class="contact-icon">in</span>
@@ -1408,12 +1414,12 @@
     <div class="footer-left">© 2026 Marijana Božanić. Built with curiosity and too many late nights.</div>
     <div class="footer-links">
         <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:makica921@gmail.com">Email</a>
+        <a href="/cdn-cgi/l/email-protection#93fef2f8faf0f2aaa1a2d3f4fef2faffbdf0fcfe">Email</a>
     </div>
 </footer>
 
 <!-- ============ SCRIPTS ============ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Navigation
     function navigateTo(pageId) {
         // Hide all pages
@@ -1458,12 +1464,3 @@
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
     });
 
-    // Initialize first page
-    document.addEventListener('DOMContentLoaded', () => {
-        const home = document.getElementById('page-home');
-        home.classList.add('active');
-        requestAnimationFrame(() => home.classList.add('visible'));
-    });
-</script>
-</body>
-</html>
