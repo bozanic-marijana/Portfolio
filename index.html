@@ -953,7 +953,7 @@
                 <h1 class="animate-in delay-1">Marijana Božanić</h1>
                 <p class="hero-subtitle animate-in delay-2">Product mind, engineering hands.</p>
                 <p class="animate-in delay-3">I'm a Solutions Engineer making the leap to Product Management — not because I woke up one day and decided to pivot, but because I realized I'd been doing PM work for years. I just didn't have the title.</p>
-                <p class="animate-in delay-3">Six years in B2B SaaS taught me that the best product insights don't come from boardrooms. They come from sitting with a frustrated scientist who can't find the "save" button, and figuring out whether that's a training problem, a configuration problem, or a sign your product is fundamentally wrong.</p>
+                <p class="animate-in delay-3">Eight years in B2B SaaS taught me that the best product insights don't come from boardrooms. They come from sitting with a frustrated scientist who can't find the "save" button, and figuring out whether that's a training problem, a configuration problem, or a sign your product is fundamentally wrong.</p>
                 <div class="hero-cta-row animate-in delay-4">
                     <button class="btn btn-primary" onclick="navigateTo('casestudies')">
                         Read the case studies <span class="btn-arrow">→</span>
@@ -963,14 +963,14 @@
 
             <div class="highlights animate-in delay-4">
                 <div class="highlight-card">
-                    <div class="highlight-number">6+</div>
+                    <div class="highlight-number">7+</div>
                     <div class="highlight-label">Years in B2B SaaS</div>
                     <div class="highlight-detail">Chemical & manufacturing industry</div>
                 </div>
                 <div class="highlight-card">
                     <div class="highlight-number">100%</div>
                     <div class="highlight-label">Digital adoption rate</div>
-                    <div class="highlight-detail">Across every implementation. No exceptions.</div>
+                    <div class="highlight-detail">Across every implementation.</div>
                 </div>
                 <div class="highlight-card">
                     <div class="highlight-number">7</div>
@@ -998,19 +998,19 @@
             <div class="about-aside">
                 <div class="aside-item">
                     <div class="aside-label">Domain</div>
-                    <div class="aside-value">Chemical & Manufacturing SaaS</div>
+                    <div class="aside-value">Chemical Industry SaaS</div>
                 </div>
                 <div class="aside-item">
                     <div class="aside-label">Superpower</div>
-                    <div class="aside-value">Translating user pain into product decisions</div>
+                    <div class="aside-value">Translating between executives and end users</div>
                 </div>
                 <div class="aside-item">
                     <div class="aside-label">Philosophy</div>
-                    <div class="aside-value">Bad feedback > polite silence</div>
+                    <div class="aside-value">Hug your haters!</div>
                 </div>
                 <div class="aside-item">
                     <div class="aside-label">Currently</div>
-                    <div class="aside-value">Building a Post Validator tool (because I can't help myself)</div>
+                    <div class="aside-value">Exploring AI options by building tools</div>
                 </div>
             </div>
         </div>
@@ -1026,12 +1026,12 @@
     <section class="contact-section">
         <div class="about-divider"></div>
         <h2>Get in Touch</h2>
-        <p class="contact-subtitle">Open to product management opportunities — or just a good conversation about B2B SaaS.</p>
+        <p class="contact-subtitle">Open to product management opportunities — or just a good conversation about customer stories.</p>
         <div class="contact-grid">
-            <a href="mailto:makica921@gmail.com" class="contact-card">
+            <a href="/cdn-cgi/l/email-protection#98f5f9f3f1fbf9a1aaa9d8fff5f9f1f4b6fbf7f5" class="contact-card">
                 <span class="contact-icon">✉</span>
                 <span class="contact-label">Email</span>
-                <span class="contact-value">makica921@gmail.com</span>
+                <span class="contact-value"><span class="__cf_email__" data-cfemail="b5d8d4dedcd6d48c8784f5d2d8d4dcd99bd6dad8">[email&#160;protected]</span></span>
             </a>
             <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener" class="contact-card">
                 <span class="contact-icon">in</span>
@@ -1408,12 +1408,12 @@
     <div class="footer-left">© 2026 Marijana Božanić. Built with curiosity and too many late nights.</div>
     <div class="footer-links">
         <a href="https://www.linkedin.com/in/marijanabozanic/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:makica921@gmail.com">Email</a>
+        <a href="/cdn-cgi/l/email-protection#f598949e9c9694ccc7c4b59298949c99db969a98">Email</a>
     </div>
 </footer>
 
 <!-- ============ SCRIPTS ============ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Navigation
     function navigateTo(pageId) {
         // Hide all pages
@@ -1456,11 +1456,17 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Nav shadow on scroll
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
     });
-</script>
 
+    // Initialize first page
+    document.addEventListener('DOMContentLoaded', () => {
+        const home = document.getElementById('page-home');
+        home.classList.add('active');
+        requestAnimationFrame(() => home.classList.add('visible'));
+    });
+</script>
 </body>
 </html>
